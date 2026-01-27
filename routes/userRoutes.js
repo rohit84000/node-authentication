@@ -16,13 +16,17 @@ var registerValidation = [
     body('password').notEmpty().withMessage('Password is required').isLength({min:3, max:8}).withMessage('Length must be greatr than 3 and less than 8')
 ]
 router.post("/register", registerValidation, async(req, res)=>{
-    const err = validationResult(req)
-    if(err.errors && err.errors.length > 0 ){
-        res.render("user/register", {errors: err.array()} )
-    }else{
-        res.send("User Registerd !" )
-        const data = await createStuent(req, res);
-        console.log(data);
+    try {
+            const err = validationResult(req)
+            if(err.errors && err.errors.length > 0 ){
+                res.render("user/register", {errors: err.array()} )
+            }else{
+                res.send("User Registerd !" )
+                const data = await createStuent(req, res);
+                console.log(data);
+            }
+    } catch (error) {
+        console.log(error.message);
         
     }
 })
