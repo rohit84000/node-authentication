@@ -1,6 +1,6 @@
 import express from 'express'
 import { body, validationResult } from 'express-validator'
-import { getStudents } from '../models/studentModels.js'
+import { createStuent } from '../models/studentModels.js'
 const router = express.Router()
 
 router.get("/login", (req, res)=>{
@@ -15,13 +15,13 @@ var registerValidation = [
     body('email').notEmpty().withMessage('Email field is required.').isEmail().withMessage('Please Enter a valid Email Id'),
     body('password').notEmpty().withMessage('Password is required').isLength({min:3, max:8}).withMessage('Length must be greatr than 3 and less than 8')
 ]
-router.post("/register", registerValidation, (req, res)=>{
+router.post("/register", registerValidation, async(req, res)=>{
     const err = validationResult(req)
     if(err.errors && err.errors.length > 0 ){
         res.render("user/register", {errors: err.array()} )
     }else{
         res.send("User Registerd !" )
-        const data = getStudents();
+        const data = await createStuent(req, res);
         console.log(data);
         
     }
