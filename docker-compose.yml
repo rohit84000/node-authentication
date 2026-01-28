@@ -1,0 +1,5 @@
+mongo:
+  image: mongo:6
+  container_name: mongo_node_auth
+  ports:
+    - "27017:27017"

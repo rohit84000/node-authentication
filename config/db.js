@@ -1,8 +1,8 @@
 import { MongoClient } from "mongodb";
 import dotenv from 'dotenv'
 dotenv.config()
-const url = process.env.DB_URL
-const dbName = "college"
+const url = process.env.MONGO_URI
+const dbName = "node_auth"
 
 let db;
 

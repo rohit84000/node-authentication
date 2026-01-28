@@ -20,3 +20,21 @@ export const createStuent = async(req, res)=>{
     }
     
 }
+
+export const findStuent = async(req)=>{    
+    try{
+        const db = getDB();
+        const {email, password} = req.body
+        const collection =  await db.listCollections({name:'students'}).toArray();
+        if(collection.length === 0){
+            throw new Error("Collection students does not exist")
+        }
+        const student = await db.collection('students').findOne({ email });
+        console.log(student);
+        
+        return student;
+    }catch(err){
+        throw err;
+    }
+    
+}
