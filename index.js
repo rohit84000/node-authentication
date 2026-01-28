@@ -9,11 +9,6 @@ app.use(express.json())
 
 app.set('view engine', 'ejs')
 await dbConnection();
-app.use("/user/", userRoutes)
-
-
-app.get("/", (req, res)=>{
-    res.send("Everything is Working!")
-})
+app.use("/", userRoutes)
 
 app.listen(3200)
