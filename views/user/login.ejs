@@ -34,15 +34,23 @@
 <div class="box">
     <h2>Login</h2>
 
-    <form action="/login" method="post">
-        <input type="email" name="email" placeholder="Email" required>
+       <% if(errors && errors.length > 0){ %> 
+        <div>
+            <% errors.forEach(function(err){ %> 
+                <p style="color: red;"> <%= err.msg %> </p>
+            <% }) %> 
+        </div>
+    <% } %>
 
-        <input type="password" name="password" placeholder="Password" required>
+    <form action="/user/register" method="post">
+        <input type="email" name="email" placeholder="Email" >
+
+        <input type="password" name="password" placeholder="Password" >
 
         <button type="submit">Login</button>
     </form>
 
-    <p>Don’t have an account? <a href="/user/register">Register</a></p>
+    <p>Don’t have an account? <a href="/register">Register</a></p>
 </div>
 
 </body>

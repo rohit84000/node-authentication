@@ -41,17 +41,17 @@
         </div>
     <% } %>
 
-    <form action="/user/register" method="post">
-        <input type="text" name="name" placeholder="Full Name" >
+    <form action="/register" method="post">
+        <input type="text" name="name" placeholder="Full Name" required>
 
-        <input type="email" name="email" placeholder="Email" >
+        <input type="email" name="email" placeholder="Email" required>
 
-        <input type="password" name="password" placeholder="Password" >
+        <input type="password" name="password" placeholder="Password" required>
 
         <button type="submit">Register</button>
     </form>
 
-    <p>Already have an account? <a href="/user/login">Login</a></p>
+    <p>Already have an account? <a href="/">Login</a></p>
 </div>
 
 </body>
